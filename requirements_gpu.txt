@@ -1,19 +1,15 @@
 # Web Framework
 streamlit==1.36.0
 
-# Core Data & Math
+# Core Data & Math (STRICTLY PINNED TO AVOID NUMPY 2.0 CRASH)
 numpy==1.26.4
 pandas==2.2.2
 scipy==1.13.1
 
-# Machine Learning (CPU-safe)
+# Machine Learning & Deep Learning
 scikit-learn==1.4.2
-
-# PyTorch CPU (stable)
-torch==2.2.2
-torchvision==0.17.2
-
-# Imaging
+torch==2.3.1
+torchvision==0.18.1
 Pillow==10.3.0
 
 # Visualization
