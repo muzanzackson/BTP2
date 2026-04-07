@@ -9,9 +9,9 @@ scipy==1.13.1
 # Machine Learning (CPU-safe)
 scikit-learn==1.4.2
 
-# PyTorch CPU (stable)
-torch==2.2.2
-torchvision==0.17.2
+# # PyTorch CPU (stable)
+# torch==2.2.2
+# torchvision==0.17.2
 
 # Imaging
 Pillow==10.3.0
