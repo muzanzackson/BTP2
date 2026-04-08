@@ -1,7 +1,8 @@
 """
 Hierarchical Relationships & Embedding Quality Analyzer
 ========================================================
-Streamlit app based on: Chatterjee et al., IEEE TAI 2025
+Streamlit application for hierarchical embedding analysis using UPGMA trees
+and Robinson-Foulds distance.
 """
 
 import io
@@ -909,8 +910,7 @@ def make_cladogram_figure(ref_newick, trees_6, rf_rows, leaf_names_map,
                bbox_to_anchor=(0.5, 0.01))
     dataset_label = "CIFAR-10" if n_classes <= 10 else "CIFAR-100"
     fig.suptitle(
-        f"All 7 Trees: WordNet Reference + 6 UPGMA Trees (G & MPP × 3 metrics) — {dataset_label}\n"
-        "Chatterjee et al., IEEE TAI 2025",
+        f"All 7 Trees: WordNet Reference + 6 UPGMA Trees (G & MPP \u00d7 3 metrics) \u2014 {dataset_label}",
         fontsize=13, fontweight="bold", y=1.01, color=MPL_TEXT)
     plt.tight_layout(rect=[0, 0.04, 1, 1])
     return fig_to_bytes(fig)
@@ -954,8 +954,7 @@ def make_dendrogram_figure(ref_newick, trees_6, leaf_names_map,
                bbox_to_anchor=(0.5, 0.01))
     dataset_label = "CIFAR-10" if n_classes <= 10 else "CIFAR-100"
     fig.suptitle(
-        f"UPGMA Dendrograms with Branch Heights (G & MPP × 3 metrics) — {dataset_label}\n"
-        "Chatterjee et al., IEEE TAI 2025",
+        f"UPGMA Dendrograms with Branch Heights (G & MPP \u00d7 3 metrics) \u2014 {dataset_label}",
         fontsize=13, fontweight="bold", y=1.01, color=MPL_TEXT)
     plt.tight_layout(rect=[0, 0.04, 1, 1])
     return fig_to_bytes(fig)
@@ -1249,11 +1248,11 @@ with st.sidebar:
             f'border-radius:2px;margin-bottom:1rem;text-align:center">{blabel}</div>',
             unsafe_allow_html=True)
 
-    st.markdown("**Paper Reference**")
+    st.markdown("**Methodology Reference**")
     st.markdown(
         '<span style="font-family:\'DM Mono\',monospace;font-size:0.72rem;color:#8892a4">'
-        'Chatterjee et al.<br>IEEE TAI 2025<br>Analyzing Hierarchical Relationships<br>'
-        'and Quality of Embedding in Latent Space</span>',
+        'Hierarchical Relationship Analysis<br>of CNN Embeddings via<br>'
+        'Phylogenetic Tree Distance Metrics</span>',
         unsafe_allow_html=True)
 
     st.divider()
@@ -1343,7 +1342,7 @@ st.markdown("""
 <div class="hero-header">
     <div class="hero-title">Hierarchical <span>Embedding</span><br>Quality Analyzer</div>
     <div class="hero-subtitle">Latent Space · UPGMA · Robinson-Foulds · CIFAR-10 / CIFAR-100</div>
-    <div class="hero-badge">IEEE TAI 2025 — Chatterjee et al.</div>
+    <div class="hero-badge">Embedding Analysis Suite · Research Tool</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -2013,7 +2012,7 @@ st.markdown("""
 <div style="margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--border);
      font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-muted);
      display:flex;justify-content:space-between;align-items:center">
-    <span>Hierarchical Embedding Analyzer · IEEE TAI 2025</span>
-    <span>Chatterjee et al. · CIFAR-10 / CIFAR-100 · UPGMA · Robinson-Foulds</span>
+    <span>Hierarchical Embedding Analyzer · CNN Embedding Analysis Suite</span>
+    <span>CIFAR-10 / CIFAR-100 · UPGMA · Robinson-Foulds</span>
 </div>
 """, unsafe_allow_html=True)

@@ -3,10 +3,9 @@
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue?logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.36-red?logo=streamlit&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Paper](https://img.shields.io/badge/IEEE%20TAI-2025-orange)
 ![CI](https://github.com/YOUR_USERNAME/Embedding-Analysis/actions/workflows/lint.yml/badge.svg)
 
-> A multi-page Streamlit application for extracting, analyzing, and visualizing feature embeddings from CNN and transformer models. Built around the methodology from **Chatterjee et al., IEEE TAI 2025**, which proposes hierarchical relationship analysis of model embeddings using phylogenetic tree distances.
+> A multi-page Streamlit application for extracting, analyzing, and visualizing feature embeddings from CNN and transformer models. Uses hierarchical relationship analysis of model embeddings via phylogenetic tree distances and Robinson-Foulds scoring.
 
 ---
 
@@ -58,7 +57,7 @@ Embedding-Analysis/
 │   └── CIFAR100_classes.json    # Class name mapping for CIFAR-100
 │
 ├── lib/                         # Vendored third-party libraries
-│   └── DefIn/                   # Deformity Index library (Chatterjee et al.)
+│   └── DefIn/                   # Deformity Index library
 │
 ├── embeddings/                  # OUTPUT: extracted .npz files (gitignored)
 │   └── .gitkeep
@@ -191,7 +190,7 @@ To stop the app, press `Ctrl + C` in the terminal.
 
 ### Page 1: Extract Embeddings
 
-**File:** `feature_extraction.py` · **Icon:** 🔬
+**File:** `feature_extraction.py`
 
 Loads a neural network model and runs your images through it to extract feature vectors from a layer you choose. Results are saved as a `.npz` file in the `embeddings/` folder.
 
@@ -206,7 +205,7 @@ Loads a neural network model and runs your images through it to extract feature 
 
 ### Page 2: Cluster & t-SNE
 
-**File:** `cluster_analysis.py` · **Icon:** 📈
+**File:** `cluster_analysis.py`
 
 Takes a `.npz` embedding file and produces:
 
@@ -226,13 +225,13 @@ Takes a `.npz` embedding file and produces:
 
 ### Page 3: Robinson–Foulds Analysis
 
-**File:** `hierarchical_analysis.py` · **Icon:** 🌿
+**File:** `hierarchical_analysis.py`
 
 The research core of the application. Answers: **does the learned embedding structure of a model match the known real-world hierarchy of classes?**
 
 **Process:**
 
-1. Loads embeddings and computes class centroids using the boundary-detection algorithm from Chatterjee et al.
+1. Loads embeddings and computes class centroids using a boundary-detection algorithm.
 2. Builds UPGMA phylogenetic trees from centroids under 3 distance metrics × 2 centroid types = **6 trees**.
 3. Compares each tree against the WordNet reference taxonomy using **Robinson–Foulds (RF) distance**.
 4. Lower RF distance = better alignment between model embeddings and real-world class hierarchy.
@@ -252,7 +251,7 @@ The research core of the application. Answers: **does the learned embedding stru
 
 ### Page 4: Tree Visualization
 
-**File:** `tree_visualization.py` · **Icon:** 🌳
+**File:** `tree_visualization.py`
 
 Renders an interactive 3D phylogenetic tree in the browser. Supports rotate, zoom, pan, and hover to see node names, depth, and branch lengths.
 
@@ -315,16 +314,7 @@ The old `runtime.txt` was a Heroku artifact and has been replaced by `environmen
 
 ## Citation
 
-If you use this tool in your research, please cite the original methodology paper:
-
-```bibtex
-@article{chatterjee2025hierarchical,
-  author  = {Chatterjee, Soumya and others},
-  title   = {Hierarchical Relationship Analysis of CNN Embeddings via Phylogenetic Tree Distance},
-  journal = {IEEE Transactions on Artificial Intelligence},
-  year    = {2025},
-}
-```
+If you use this tool in your research, please cite the original methodology paper as referenced in the project documentation.
 
 ---
 

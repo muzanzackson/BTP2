@@ -19,7 +19,7 @@ if "generated" not in st.session_state:
 # -------------------------------
 # 1. Class Selection
 # -------------------------------
-st.header("1️⃣ Select Class Configuration")
+st.header("1. Select Class Configuration")
 
 class_option = st.radio(
     "Choose class source:",
@@ -50,7 +50,7 @@ else:
 # -------------------------------
 # 2. Tree Selection
 # -------------------------------
-st.header("2️⃣ Select Tree")
+st.header("2. Select Tree")
 
 tree_option = st.radio(
     "Choose tree source:",
@@ -89,11 +89,11 @@ else:
 # -------------------------------
 # 3. Run Visualization
 # -------------------------------
-st.header("3️⃣ Generate Visualization")
+st.header("3. Generate Visualization")
 
 output_html = "tree_visualization.html"
 
-if st.button("🚀 Generate Tree Visualization"):
+if st.button("Generate Tree Visualization"):
     if not tree_path or not label_path:
         st.error("Please select both tree and label files.")
     else:
@@ -124,7 +124,7 @@ if st.button("🚀 Generate Tree Visualization"):
 # -------------------------------
 # 4. Display HTML (AUTO REFRESH)
 # -------------------------------
-st.header("4️⃣ View Visualization")
+st.header("4. View Visualization")
 
 html_file = Path(output_html)
 

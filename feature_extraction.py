@@ -499,7 +499,6 @@ with st.sidebar:
 #  MAIN TITLE
 # ═══════════════════════════════════════════════════════════════════════════════
 st.title("🔬 Model Feature Extractor")
-st.caption("Port of the Tkinter desktop app — all functions included.")
 st.markdown("---")
 
 

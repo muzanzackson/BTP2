@@ -236,7 +236,7 @@ def build_figure(tree, id_to_name: dict, layout: str = "radial") -> go.Figure:
         annotations=[
             dict(
                 text=(
-                    "🖱 Drag to rotate  |  Scroll to zoom  |  "
+                    "Drag to rotate  |  Scroll to zoom  |  "
                     "Shift+drag to pan  |  Hover nodes for details"
                 ),
                 xref="paper", yref="paper",
