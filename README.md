@@ -51,6 +51,7 @@ Embedding-Analysis/
 |-- tree_rendering.py        # Helper: CLI tool that generates tree HTML files
 |
 |-- requirements.txt         # All Python dependencies with pinned versions
+|-- requirements_gpu.txt         # For GPU 
 |
 |-- CIFAR10_WordNet.nwk      # Reference tree for CIFAR-10 (WordNet hierarchy)
 |-- CIFAR10_classes.json     # Class name mapping for CIFAR-10
@@ -75,8 +76,9 @@ Conda handles complex binary dependencies (like PyTorch) more reliably than pip 
 **Step 1: Install Miniconda**
 
 If you do not already have Conda, download and install Miniconda:
-- Mac/Linux: https://docs.conda.io/en/latest/miniconda.html
-- Windows: https://docs.conda.io/en/latest/miniconda.html
+
+- Mac/Linux: <https://docs.conda.io/en/latest/miniconda.html>
+- Windows: <https://docs.conda.io/en/latest/miniconda.html>
 
 **Step 2: Create a new environment**
 
@@ -97,16 +99,19 @@ Your terminal prompt should now show `(embedding-analysis)` at the start.
 Install PyTorch separately first because the correct command depends on whether you have a GPU.
 
 - **CPU only (most laptops):**
+
   ```bash
   pip install torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cpu
   ```
 
 - **NVIDIA GPU (CUDA 11.8):**
+
   ```bash
   pip install torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu118
   ```
 
 - **NVIDIA GPU (CUDA 12.1):**
+
   ```bash
   pip install torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu121
   ```
@@ -144,7 +149,7 @@ Use this if you prefer not to install Conda. This uses Python's built-in virtual
 python3 --version
 ```
 
-You need 3.10 or 3.11. If your version is different, install the correct version from https://www.python.org/downloads/
+You need 3.10 or 3.11. If your version is different, install the correct version from <https://www.python.org/downloads/>
 
 **Step 2: Create a virtual environment**
 
@@ -158,16 +163,19 @@ python3 -m venv venv
 **Step 3: Activate the environment**
 
 - Mac / Linux:
+
   ```bash
   source venv/bin/activate
   ```
 
 - Windows (Command Prompt):
+
   ```cmd
   venv\Scripts\activate
   ```
 
 - Windows (PowerShell):
+
   ```powershell
   venv\Scripts\Activate.ps1
   ```
@@ -392,6 +400,7 @@ Click **Generate Tree Visualization**. The app runs the `tree_rendering.py` scri
 **Step 4: View**
 
 The interactive 3D tree appears directly in the page. You can:
+
 - **Drag** to rotate the 3D view.
 - **Scroll** to zoom in and out.
 - **Shift + drag** to pan.
@@ -429,6 +438,7 @@ When you load a pretrained model for the first time, PyTorch downloads the weigh
 **ete3 installation on Windows**
 
 `ete3` can be tricky to install on Windows. If `pip install` fails, try:
+
 ```bash
 conda install -c etetoolkit ete3
 ```

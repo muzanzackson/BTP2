@@ -21,3 +21,6 @@ plotly==5.22.0
 ete3==3.1.3
 biopython==1.83
 dendropy==4.6.1
+
+# Optional GPU Acceleration (CuPy - install based on CUDA version)
+cupy-cuda12x==13.3.0

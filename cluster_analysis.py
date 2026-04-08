@@ -263,8 +263,8 @@ def compute_max_radius(features_tsne, labels, centroids, unique_labels, distance
             point_counts[label] = (0, 0)
             shifted_centroids[label] = centroid
             continue
-        own_distances = cdist(own_points, [centroid], metric=distance_metric).flatten()
-        other_distances = cdist(other_points, [centroid], metric=distance_metric).flatten() if other_points.size > 0 else np.array([])
+        own_distances = cdist(own_points, [centroid], metric=_scipy_metric(distance_metric)).flatten()
+        other_distances = cdist(other_points, [centroid], metric=_scipy_metric(distance_metric)).flatten() if other_points.size > 0 else np.array([])
         log("Debug", f"Class {label}: {own_points.shape[0]} own pts, {other_points.shape[0]} other pts")
         own_indices = np.argsort(own_distances)
         sorted_own_distances = own_distances[own_indices]
@@ -301,12 +301,12 @@ def compute_deformity_index(features_tsne, labels, centroids_dict, max_radii, po
             log("DEFORMITY", f"Class {label}: 1.000 (too few points)")
             continue
         centroid = centroids_dict[label]
-        distances = cdist(points, [centroid], metric=distance_metric).flatten()
+        distances = cdist(points, [centroid], metric=_scipy_metric(distance_metric)).flatten()
         compactness = np.std(distances) / (np.mean(distances) + 1e-8)
         own_count, other_count = point_counts.get(label, (len(points), 0))
         overlap_penalty = 1.0 - (own_count / (own_count + other_count + 1e-8))
         if len(points) > 1:
-            nn_dists = np.sort(cdist(points, points, metric=distance_metric), axis=1)[:, 1]
+            nn_dists = np.sort(cdist(points, points, metric=_scipy_metric(distance_metric)), axis=1)[:, 1]
             sparsity = np.mean(distances) / (np.mean(nn_dists) + 1e-8)
             sparsity_penalty = min(sparsity / 5.0, 1.0)
         else:
@@ -351,6 +351,11 @@ def compute_clustering_metrics(features, true_labels, file_path):
     rand_index = adjusted_rand_score(true_labels, pred_labels)
     log("Info", f"NMI: {nmi:.4f}, Purity: {purity:.4f}, Rand: {rand_index:.4f}")
     return {'Dataset': os.path.basename(file_path), 'NMI': nmi, 'Purity Index': purity, 'Rand Index': rand_index}
+
+# ─── Distance Metric Helper ──────────────────────────────────────────────────────
+def _scipy_metric(metric: str) -> str:
+    """Map user-facing metric names to scipy-compatible strings."""
+    return "cityblock" if metric == "manhattan" else metric
 
 # ─── Main Visualize Function ─────────────────────────────────────────────────────
 def visualize_features(features, labels, feature_name, dim, method, distance_metric):
@@ -444,7 +449,7 @@ def visualize_features(features, labels, feature_name, dim, method, distance_met
                     for point in features_tsne[mask]:
                         ax.plot([point[0], centroid[0]], [point[1], centroid[1]], [point[2], centroid[2]], c=colors[idx], alpha=0.15, linewidth=0.4)
                 centroids.append((label, centroid))
-                distances = cdist(features_tsne[mask], [centroid], metric=distance_metric).flatten()
+                distances = cdist(features_tsne[mask], [centroid], metric=_scipy_metric(distance_metric)).flatten()
                 distances_per_class[label] = distances
                 mode_distance = compute_mode_distance(distances)
                 table_data.append([f"Class {label}", f"{np.mean(distances):.4f}", f"{mode_distance:.4f}", f"{np.max(distances):.4f}"])
@@ -518,7 +523,7 @@ def visualize_features(features, labels, feature_name, dim, method, distance_met
     if len(centroids) > 1:
         centroid_array = np.array([c[1] for c in centroids])
         centroid_labels = [c[0] for c in centroids]
-        dist_matrix = squareform(pdist(centroid_array, metric=distance_metric))
+        dist_matrix = squareform(pdist(centroid_array, metric=_scipy_metric(distance_metric)))
         fig_w = min(max(6, len(centroid_labels)), 32)
         fig_h = min(max(5, len(centroid_labels)), 28)
         hfig, hax = plt.subplots(figsize=(fig_w, fig_h), facecolor='#0d0d0d')
@@ -702,7 +707,7 @@ with st.sidebar:
 
     dim = st.selectbox("Dimension", ["2D", "3D"], index=0)
     method = st.selectbox("Reduction Method", ["PCA", "TruncatedSVD"], index=0)
-    distance_metric = st.selectbox("Distance Metric", ["euclidean", "cosine", "cityblock", "canberra"], index=0)
+    distance_metric = st.selectbox("Distance Metric", ["euclidean", "manhattan", "canberra"], index=0)
 
     # Data info
     if st.session_state.data:
