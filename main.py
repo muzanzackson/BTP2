@@ -1,41 +1,47 @@
 import streamlit as st
 
-# 1. Main Page Configuration
+# ─── Page Configuration ────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="CNN Analysis Suite",
+    page_title="CNN Embedding Analysis Suite",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# 2. Define the pages
+# ─── Page Definitions ──────────────────────────────────────────────────────────
 extractor_page = st.Page(
-    "feature_extraction.py", 
-    title="1. Extract Embeddings", 
+    "feature_extraction.py",
+    title="1. Extract Embeddings",
     icon="🔬",
-    default=True  # Lands here first if they need to generate embeddings
+    default=True
 )
 
 visualizer_page = st.Page(
-    "cluster_analysis.py", 
-    title="2. Cluster Metrics", 
-    icon="📊"
+    "cluster_analysis.py",
+    title="2. Cluster & t-SNE",
+    icon="📈"
 )
 
 robinson_foulds = st.Page(
-    "hierarchical_analysis.py", 
-    title="3. Hierarchical Analysis", 
-    icon="📊"
+    "hierarchical_analysis.py",
+    title="3. Robinson-Foulds Analysis",
+    icon="🌿"
 )
 
 tree_vis = st.Page(
-    "tree_visualization.py", 
-    title="4. Tree Visualization", 
-    icon="📊"
+    "tree_visualization.py",
+    title="4. Tree Visualization",
+    icon="🌳"
 )
 
-# 3. Setup Navigation
-pg = st.navigation([extractor_page, visualizer_page,robinson_foulds,tree_vis])
+# ─── Navigation ────────────────────────────────────────────────────────────────
+pg = st.navigation([extractor_page, visualizer_page, robinson_foulds, tree_vis])
 
-# 4. Run the app
+# ─── Sidebar Footer ────────────────────────────────────────────────────────────
+with st.sidebar:
+    st.markdown("---")
+    st.caption("📄 Chatterjee et al., IEEE TAI 2025")
+    st.caption("v1.0.0 · CNN Embedding Analysis Suite")
+
+# ─── Run ───────────────────────────────────────────────────────────────────────
 pg.run()

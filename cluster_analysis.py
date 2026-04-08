@@ -22,7 +22,8 @@ import pandas as pd
 import streamlit as st
 
 warnings.simplefilter("ignore", category=UserWarning)
-logging.basicConfig(filename="app.log", level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+Path("logs").mkdir(exist_ok=True)
+logging.basicConfig(filename="logs/app.log", level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # ─── Page Config ────────────────────────────────────────────────────────────────
 # st.set_page_config(

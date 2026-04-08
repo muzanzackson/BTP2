@@ -3,6 +3,9 @@ import streamlit.components.v1 as components
 import subprocess
 from pathlib import Path
 
+# ── Project root (same dir as main.py) ─────────────────────────────────────────
+ROOT_DIR = Path(__file__).parent
+
 # st.set_page_config(page_title="Tree Visualization", layout="wide")
 
 # st.title("🌳 3D Phylogenetic Tree Visualization")
@@ -30,11 +33,11 @@ if class_option == "Default (CIFAR)":
     dataset = st.selectbox("Select dataset:", ["CIFAR10", "CIFAR100"])
 
     if dataset == "CIFAR10":
-        label_path = "CIFAR10_classes.json"
-        default_tree = "CIFAR10_WordNet.nwk"
+        label_path = str(ROOT_DIR / "data" / "CIFAR10_classes.json")
+        default_tree = str(ROOT_DIR / "data" / "CIFAR10_WordNet.nwk")
     else:
-        label_path = "CIFAR100_classes.json"
-        default_tree = "CIFAR100_WordNet.nwk"
+        label_path = str(ROOT_DIR / "data" / "CIFAR100_classes.json")
+        default_tree = str(ROOT_DIR / "data" / "CIFAR100_WordNet.nwk")
 
 else:
     uploaded_json = st.file_uploader("Upload JSON file", type=["json"])
@@ -96,7 +99,7 @@ if st.button("🚀 Generate Tree Visualization"):
     else:
         cmd = [
             "python",
-            "tree_rendering.py",
+            str(ROOT_DIR / "tree_rendering.py"),
             "--nwk", tree_path,
             "--labels", label_path,
             "--output", output_html,

@@ -1,3 +1,14 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  CNN Embedding Analysis Suite — CPU Requirements
+#  Python >= 3.10, < 3.12
+#
+#  Install:     pip install -r requirements.txt
+#  GPU install: pip install -r requirements_gpu.txt
+#
+#  NOTE: Install PyTorch BEFORE running pip install -r requirements.txt.
+#  See README.md → Environment Setup for the correct torch install command.
+# ─────────────────────────────────────────────────────────────────────────────
+
 # Web Framework
 streamlit==1.36.0
 
@@ -8,10 +19,6 @@ scipy==1.13.1
 
 # Machine Learning (CPU-safe)
 scikit-learn==1.4.2
-
-# # PyTorch CPU (stable)
-# torch==2.2.2
-# torchvision==0.17.2
 
 # Imaging
 Pillow==10.3.0

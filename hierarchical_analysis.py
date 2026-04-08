@@ -483,7 +483,8 @@ MPL_TEXT2  = "#8892a4"
 # TAXONOMY LOADER  — default files OR custom uploads
 # ─────────────────────────────────────────────────────────────────────────────
 
-_DEFAULT_DIR = pathlib.Path(__file__).parent   # same folder as app.py
+_DEFAULT_DIR  = pathlib.Path(__file__).parent          # project root (same folder as main.py)
+_DATA_DIR     = _DEFAULT_DIR / "data"                  # taxonomy reference files
 
 def load_taxonomy(nwk_source, json_source) -> tuple[str, dict]:
     """
@@ -525,8 +526,8 @@ def load_taxonomy(nwk_source, json_source) -> tuple[str, dict]:
 def get_default_taxonomy(dataset_type: str) -> tuple[str, dict]:
     """Load from the default .nwk / .json files shipped with the app."""
     prefix = "CIFAR10" if dataset_type == "cifar10" else "CIFAR100"
-    nwk  = _DEFAULT_DIR / f"{prefix}_WordNet.nwk"
-    jsn  = _DEFAULT_DIR / f"{prefix}_classes.json"
+    nwk  = _DATA_DIR / f"{prefix}_WordNet.nwk"
+    jsn  = _DATA_DIR / f"{prefix}_classes.json"
     return load_taxonomy(nwk, jsn)
 # ─────────────────────────────────────────────────────────────────────────────
 # CORE ALGORITHMS
@@ -1075,7 +1076,7 @@ def run_defin_for_all_trees(trees_dir: pathlib.Path, ref_nwk: pathlib.Path | str
                     continue
 
                 # ── Run DefIn ─────────────────────────────────────────────
-                cmd = ["python", "./DefIn/DefIn.py",
+                cmd = ["python", "lib/DefIn/DefIn.py",
                        "-i", str(fname), "-r", ref_path, "-t"]
                 try:
                     proc = subprocess.run(
@@ -1115,8 +1116,8 @@ def run_defin_for_all_trees(trees_dir: pathlib.Path, ref_nwk: pathlib.Path | str
 
                 except FileNotFoundError:
                     result["error"] = (
-                        "DefIn script not found at ./DefIn/DefIn.py\n"
-                        "Check that the DefIn directory is present and "
+                        "DefIn script not found at lib/DefIn/DefIn.py\n"
+                        "Check that the lib/DefIn directory is present and "
                         "DefIn.py is executable.")
                 except subprocess.TimeoutExpired:
                     result["error"] = "DefIn timed out after 120 s."
@@ -1459,7 +1460,7 @@ if uploaded_file is not None:
                     f"⚠ Default taxonomy file not found: {_fe}\n\n"
                     "Place **CIFAR10_WordNet.nwk**, **CIFAR10_classes.json**, "
                     "**CIFAR100_WordNet.nwk**, **CIFAR100_classes.json** "
-                    "in the same folder as **app.py**, or use the Custom Upload option in the sidebar."
+                    "in the `data/` directory, or use the Custom Upload option in the sidebar."
                 )
                 st.stop()
 
@@ -1605,7 +1606,7 @@ if uploaded_file is not None:
                 # ── Run DefIn for all 6 trees ────────────────────────────────────────────
                 update_progress(0.93, "Running DefIn deformity analysis…")
                 _ref_source = (
-                    (_DEFAULT_DIR / f"{'CIFAR10' if n_classes <= 10 else 'CIFAR100'}_WordNet.nwk")
+                    (_DATA_DIR / f"{'CIFAR10' if n_classes <= 10 else 'CIFAR100'}_WordNet.nwk")
                     if not st.session_state.get("custom_taxonomy")
                     else WORDNET_NEWICK          # raw string from custom upload
                 )

@@ -45,8 +45,9 @@ import io
 import zipfile
 
 # ─── Logging & Warnings ────────────────────────────────────────────────────────
+Path("logs").mkdir(exist_ok=True)
 logging.basicConfig(
-    filename="app.log", level=logging.DEBUG,
+    filename="logs/app.log", level=logging.DEBUG,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -424,7 +425,7 @@ def extract_features(layer_name, dataset_source, transform_choice, dataset_name,
             npz_path = str(npz_save_path.resolve())
 
             st.session_state.npz_file_path = npz_path
-            with open("last_npz_path.txt", "w") as f:
+            with open("logs/last_npz_path.txt", "w") as f:
                 f.write(npz_path)
             logging.debug(f"Saved NPZ file: {npz_path}")
 
@@ -451,7 +452,7 @@ def resolve_npz_path():
     path = st.session_state.npz_file_path
 
     if not path:
-        txt = Path("last_npz_path.txt")
+        txt = Path("logs/last_npz_path.txt")
         if txt.exists():
             path = txt.read_text().strip()
             st.session_state.npz_file_path = path
@@ -815,7 +816,7 @@ else:
                 if overwrite == "Use existing features":
                     if st.button("✅ Use Existing Features", key="use_existing_btn"):
                         st.session_state.npz_file_path = str(expected_npz.resolve())
-                        with open("last_npz_path.txt", "w") as f:
+                        with open("logs/last_npz_path.txt", "w") as f:
                             f.write(st.session_state.npz_file_path)
                         # Cache bytes for download
                         st.session_state.extracted_npz_bytes = expected_npz.read_bytes()
@@ -1016,7 +1017,7 @@ if run_viz:
             )
             st.markdown(
                 f"The feature file will be picked up automatically from  \n"
-                f"`last_npz_path.txt` → `{npz_path}`"
+                f"`logs/last_npz_path.txt` → `{npz_path}`"
             )
 
         # ── Download the npz if not already shown ────────────────────────────────

@@ -1,25 +1,66 @@
-# Python
+# ─── Python ───────────────────────────────────────────────────────────────────
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
 *.pyd
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
 
-# Virtual environments
+# ─── Environments ─────────────────────────────────────────────────────────────
+venv/
 .env/
+*.env
+.conda/
 
-# MacOS
+# ─── IDE & Editor ─────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
 .DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
 
-# Logs
+# ─── Logs (runtime-generated — never commit) ──────────────────────────────────
+logs/
 *.log
-app.log
 
-# Temporary / outputs
-*.png
-*.html
+# ─── Generated outputs (runtime artifacts) ────────────────────────────────────
+tree_visualization.html
+last_npz_path.txt
+temp_labels.json
+temp_tree.nwk
 
-# Jupyter (if any later)
+# ─── Embedding outputs (large binary files) ───────────────────────────────────
+embeddings/*.npz
+embeddings/*.npy
+
+# ─── UPGMA tree outputs ────────────────────────────────────────────────────────
+trees/*.nwk
+
+# ─── PyTorch dataset cache ────────────────────────────────────────────────────
+data/cifar-10-batches-py/
+data/cifar-100-python/
+data/MNIST/
+data/FashionMNIST/
+data/stl10_binary/
+
+# ─── Keep empty output folder stubs ──────────────────────────────────────────
+!embeddings/.gitkeep
+!trees/.gitkeep
+!logs/.gitkeep
+!assets/.gitkeep
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
 .ipynb_checkpoints/
 
-# Git
-.git/
+# ─── R artifacts (inside lib/DefIn) ──────────────────────────────────────────
+*.Rhistory
+*.RData

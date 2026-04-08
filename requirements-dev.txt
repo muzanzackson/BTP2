@@ -1,0 +1,7 @@
+# Developer / Contributor Tools
+# Install alongside requirements.txt when contributing to this project:
+#   pip install -r requirements-dev.txt
+
+ruff==0.4.4
+flake8==7.0.0
+black==24.4.2
