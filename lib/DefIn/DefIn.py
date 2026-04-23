@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import Header
 from Header import *
 import Species_Class
 from Species_Class import *

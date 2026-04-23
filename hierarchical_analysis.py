@@ -6,30 +6,29 @@ and Robinson-Foulds distance.
 """
 
 import io
-import tempfile
 
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.gridspec import GridSpec
-from scipy.spatial.distance import pdist, cdist, squareform
+from scipy.spatial.distance import cdist
 from scipy.cluster.hierarchy import linkage, to_tree
-import numpy as np
 import streamlit as st
 from ete3 import Tree
-import json, pathlib
-import subprocess, re
+import json
+import pathlib
+import subprocess
+import re
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG
 # ─────────────────────────────────────────────────────────────────────────────
-# st.set_page_config(
-#     page_title="Hierarchical Embedding Analyzer",
-#     page_icon="🌿",
-#     layout="wide",
-#     initial_sidebar_state="expanded",
-# )
+st.set_page_config(
+    page_title="Hierarchical Embedding Analyzer",
+    page_icon="🌿",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CUSTOM CSS — Dark editorial aesthetic with sharp accents
@@ -1865,7 +1864,7 @@ if uploaded_file is not None:
                         row_color = METRIC_COLORS.get(gm_key, "#e8eaf0")
 
                         if r["error"]:
-                            di_cell   = f"<td class='rf-high'>ERROR</td>"
+                            di_cell   = "<td class='rf-high'>ERROR</td>"
                             cld_cell  = "<td style='color:var(--text-muted)'>—</td>"
                         else:
                             # Color deformity: low=green, mid=amber, high=red  (thresholds are heuristic)

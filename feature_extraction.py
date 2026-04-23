@@ -16,7 +16,6 @@ import importlib.util
 import sys
 import logging
 from pathlib import Path
-import shutil
 from glob import glob
 from torchvision.models import (
     VGG11_Weights, VGG11_BN_Weights, VGG13_Weights, VGG13_BN_Weights,
@@ -42,7 +41,6 @@ from torchvision.models import (
 from torchvision.datasets import CIFAR10, CIFAR100, MNIST, FashionMNIST, STL10
 import tempfile
 import io
-import zipfile
 
 # ─── Logging & Warnings ────────────────────────────────────────────────────────
 Path("logs").mkdir(exist_ok=True)
@@ -53,12 +51,12 @@ logging.basicConfig(
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # ─── Page Config ───────────────────────────────────────────────────────────────
-# st.set_page_config(
-#     page_title="Model Feature Extractor",
-#     page_icon="🔬",
-#     layout="wide",
-#     initial_sidebar_state="expanded"
-# )
+st.set_page_config(
+    page_title="Model Feature Extractor",
+    page_icon="🔬",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # ─── Device ────────────────────────────────────────────────────────────────────
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -312,7 +310,7 @@ def extract_features(layer_name, dataset_source, transform_choice, dataset_name,
                 # derive label from the filename prefix before the last '_' or use "unknown"
                 label = Path(uf.name).parent.name if hasattr(uf, "name") else "unknown"
                 image_items.append((img, label, uf.name))
-            except Exception as e:
+            except Exception:
                 image_items.append((None, "unknown", uf.name))
     else:
         # Standard dataset (same as tkinter)
@@ -1010,8 +1008,8 @@ if run_viz:
         # ── Instructions for the separate visualisation app ──────────────────────
         with st.expander("ℹ️ Open in the full Visualisation App"):
             st.code(
-                f"# Terminal command:\n"
-                f"streamlit run visualisation_app.py",
+                "# Terminal command:\n"
+                "streamlit run visualisation_app.py",
                 language="bash"
             )
             st.markdown(

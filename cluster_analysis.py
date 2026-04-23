@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')
-from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
 from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA, TruncatedSVD
@@ -15,7 +14,6 @@ import warnings
 import logging
 import zipfile
 import io
-import tempfile
 from pathlib import Path
 from scipy.spatial.distance import pdist, squareform, cdist
 import pandas as pd
@@ -26,12 +24,12 @@ Path("logs").mkdir(exist_ok=True)
 logging.basicConfig(filename="logs/app.log", level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # ─── Page Config ────────────────────────────────────────────────────────────────
-# st.set_page_config(
-#     page_title="CNN Embedding Analysis",
-#     page_icon="🧠",
-#     layout="wide",
-#     initial_sidebar_state="expanded",
-# )
+st.set_page_config(
+    page_title="CNN Embedding Analysis",
+    page_icon="🧠",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
 # ─── Custom CSS ─────────────────────────────────────────────────────────────────
 st.markdown("""
@@ -896,7 +894,7 @@ if run_btn and st.session_state.data is not None:
                     c_buf.write(f"Class Centroids in {dim} t-SNE Space:\n")
                     for lbl, c in centroids:
                         c_buf.write(f"Class {lbl}: ({c[0]:.4f}, {c[1]:.4f}" + (f", {c[2]:.4f})\n" if len(c) == 3 else ")\n"))
-                    c_buf.write(f"\nShifted Centroids:\n")
+                    c_buf.write("\nShifted Centroids:\n")
                     for lbl, c in sc_list:
                         c_buf.write(f"Class {lbl}: ({c[0]:.4f}, {c[1]:.4f}" + (f", {c[2]:.4f})\n" if len(c) == 3 else ")\n"))
                     st.session_state.centroids_txt = c_buf.getvalue()

@@ -64,3 +64,14 @@ data/stl10_binary/
 # ─── R artifacts (inside lib/DefIn) ──────────────────────────────────────────
 *.Rhistory
 *.RData
+
+# ─── LaTeX ────────────────────────────────────────────────────────────────────
+BTP_Report/
+results/
+ImageNet_Classification_Using_WordNet_Hierarchy.pdf
+Analyzing_Hierarchical_Relationships_and_Quality_of_Embedding_in_Latent_Space.pdf
+Mahapatra-Mukherjee2021_Article_DeformityIndexASemi-ReferenceC.pdf
+LCA.py
+LCA_Report.txt
+main.pdf
+PCA_Effective_Dim.py

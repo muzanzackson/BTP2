@@ -1,0 +1,55 @@
+cluster_analysis.py:5:34: F401 [*] `mpl_toolkits.mplot3d.Axes3D` imported but unused
+cluster_analysis.py:18:8: F401 [*] `tempfile` imported but unused
+cluster_analysis.py:326:20: E701 Multiple statements on one line (colon)
+cluster_analysis.py:327:20: E701 Multiple statements on one line (colon)
+cluster_analysis.py:328:20: E701 Multiple statements on one line (colon)
+cluster_analysis.py:329:20: E701 Multiple statements on one line (colon)
+cluster_analysis.py:899:33: F541 [*] f-string without any placeholders
+feature_extraction.py:19:8: F401 [*] `shutil` imported but unused
+feature_extraction.py:45:8: F401 [*] `zipfile` imported but unused
+feature_extraction.py:263:28: E741 Ambiguous variable name: `l`
+feature_extraction.py:315:33: F841 [*] Local variable `e` is assigned to but never used
+feature_extraction.py:738:24: E741 Ambiguous variable name: `l`
+feature_extraction.py:744:21: E741 Ambiguous variable name: `l`
+feature_extraction.py:1013:17: F541 [*] f-string without any placeholders
+feature_extraction.py:1014:17: F541 [*] f-string without any placeholders
+hierarchical_analysis.py:9:8: F401 [*] `tempfile` imported but unused
+hierarchical_analysis.py:16:33: F401 [*] `matplotlib.gridspec.GridSpec` imported but unused
+hierarchical_analysis.py:17:36: F401 [*] `scipy.spatial.distance.pdist` imported but unused
+hierarchical_analysis.py:17:50: F401 [*] `scipy.spatial.distance.squareform` imported but unused
+hierarchical_analysis.py:19:17: F811 [*] Redefinition of unused `np` from line 11
+hierarchical_analysis.py:22:1: E401 [*] Multiple imports on one line
+hierarchical_analysis.py:23:1: E401 [*] Multiple imports on one line
+hierarchical_analysis.py:553:58: E741 Ambiguous variable name: `l`
+hierarchical_analysis.py:557:64: E741 Ambiguous variable name: `l`
+hierarchical_analysis.py:761:19: E702 Multiple statements on one line (semicolon)
+hierarchical_analysis.py:1148:27: E701 Multiple statements on one line (colon)
+hierarchical_analysis.py:1149:27: E701 Multiple statements on one line (colon)
+hierarchical_analysis.py:1217:62: E741 Ambiguous variable name: `l`
+hierarchical_analysis.py:1442:42: E741 Ambiguous variable name: `l`
+hierarchical_analysis.py:1868:41: F541 [*] f-string without any placeholders
+hierarchical_analysis.py:1873:46: E701 Multiple statements on one line (colon)
+hierarchical_analysis.py:1874:46: E701 Multiple statements on one line (colon)
+hierarchical_analysis.py:1875:33: E701 Multiple statements on one line (colon)
+lib/DefIn/DefIn.py:3:8: F401 [*] `Header` imported but unused
+lib/DefIn/DefIn.py:4:1: F403 `from Header import *` used; unable to detect undefined names
+lib/DefIn/DefIn.py:6:1: F403 `from Species_Class import *` used; unable to detect undefined names
+lib/DefIn/DefIn.py:8:1: F403 `from Parsing import *` used; unable to detect undefined names
+lib/DefIn/DefIn.py:15:11: F405 `OptionParser` may be undefined, or defined from star imports
+lib/DefIn/DefIn.py:64:4: F841 Local variable `leaf_labels` is assigned to but never used
+lib/DefIn/DefIn.py:138:2: F841 Local variable `deformity_index` is assigned to but never used
+lib/DefIn/DefIn.py:144:14: F405 `Tree` may be undefined, or defined from star imports
+lib/DefIn/DefIn.py:164:5: F405 `sys` may be undefined, or defined from star imports
+lib/DefIn/DefIn.py:172:9: F405 `Tree` may be undefined, or defined from star imports
+lib/DefIn/Header.py:2:22: F401 [*] `optparse.OptionParser` imported but unused
+lib/DefIn/Header.py:4:8: F401 [*] `sys` imported but unused
+lib/DefIn/Header.py:7:8: F401 [*] `dendropy` imported but unused
+lib/DefIn/Header.py:8:22: F401 [*] `dendropy.TreeList` imported but unused
+lib/DefIn/Header.py:8:32: F401 [*] `dendropy.Tree` imported but unused
+lib/DefIn/Header.py:8:38: F401 [*] `dendropy.Taxon` imported but unused
+lib/DefIn/Header.py:8:45: F401 [*] `dendropy.TaxonSet` imported but unused
+lib/DefIn/Header.py:8:55: F401 [*] `dendropy.Node` imported but unused
+lib/DefIn/Header.py:8:61: F401 [*] `dendropy.treesim` imported but unused
+tree_rendering.py:33:36: F401 `plotly.graph_objects` imported but unused; consider using `importlib.util.find_spec` to test for availability
+Found 53 errors.
+[*] 26 fixable with the `--fix` option (2 hidden fixes can be enabled with the `--unsafe-fixes` option).

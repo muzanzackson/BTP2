@@ -175,12 +175,16 @@ Activate your environment and navigate to the project folder:
 ```bash
 conda activate embedding-analysis   # or: source venv/bin/activate
 cd /path/to/Embedding-Analysis
-streamlit run main.py
+python main.py
 ```
 
-Streamlit will print a local URL (usually `http://localhost:8501`). Open it in your browser. The sidebar on the left lets you navigate between the four pages.
+The script will launch four independent Streamlit servers in the background. You can access the pages using the following local URLs:
+- **Feature Extraction:** http://localhost:8501
+- **Cluster Analysis:** http://localhost:8502
+- **Hierarchical Analysis:** http://localhost:8503
+- **Tree Visualization:** http://localhost:8504
 
-To stop the app, press `Ctrl + C` in the terminal.
+To shut down all servers, press `Ctrl + C` in the terminal.
 
 > **Important:** Always run the command from inside the `Embedding-Analysis/` directory, not from a parent folder — the app reads relative paths for `embeddings/`, `trees/`, and `data/`.
 
