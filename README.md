@@ -9,6 +9,16 @@
 
 ---
 
+## Reference Papers
+
+This software is based on the following research articles. If you use this tool in your research, please consider citing them:
+
+1. Chatterjee, A., Mukherjee, J., & Das, P. P. (2025). **Analyzing Hierarchical Relationships and Quality of Embedding in Latent Space**. *IEEE Transactions on Artificial Intelligence*, 6(4), 843-858. [DOI: 10.1109/TAI.2024.3497921](https://doi.org/10.1109/TAI.2024.3497921)
+2. Chatterjee, A., Mukherjee, J., & Das, P. P. (2024). **ImageNet Classification Using WordNet Hierarchy**. *IEEE Transactions on Artificial Intelligence*, 5(4), 1718-1727. [DOI: 10.1109/TAI.2023.3297086](https://doi.org/10.1109/TAI.2023.3297086)
+3. Mahapatra, A., & Mukherjee, J. (2021). **Deformity Index: A Semi-Reference Clade-Based Quality Metric of Phylogenetic Trees**. *Journal of Molecular Evolution*.
+
+---
+
 ## What This Project Does
 
 When you train or use a deep learning model, each layer produces a numeric vector for every image it processes — these are called **embeddings** or **feature vectors**. Similar images should produce similar vectors. This suite lets you:
@@ -318,7 +328,7 @@ The old `runtime.txt` was a Heroku artifact and has been replaced by `environmen
 
 ## Citation
 
-If you use this tool in your research, please cite the original methodology paper as referenced in the project documentation.
+If you use this tool in your research, please cite the research articles listed in the [Reference Papers](#reference-papers) section at the top of this document.
 
 ---
 
