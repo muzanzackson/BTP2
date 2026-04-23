@@ -6,7 +6,7 @@ from pathlib import Path
 # ── Project root (same dir as main.py) ─────────────────────────────────────────
 ROOT_DIR = Path(__file__).parent
 
-st.set_page_config(page_title="Tree Visualization", layout="wide",icon="🌳")
+st.set_page_config(page_title="Tree Visualization", layout="wide",page_icon="🌳")
 
 st.title("3D Phylogenetic Tree Visualization")
 
