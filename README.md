@@ -1,3 +1,6 @@
+#Tutorial Video 
+link : https://youtu.be/So7gbLUF8bI
+
 # CNN Embedding Analysis Suite
 
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue?logo=python&logoColor=white)
