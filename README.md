@@ -1,4 +1,4 @@
-#Tutorial Video 
+# Tutorial Video 
 link : https://youtu.be/So7gbLUF8bI
 
 # CNN Embedding Analysis Suite
